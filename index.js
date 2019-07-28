@@ -21,6 +21,7 @@ const ordersApi = new OrdersApi();
 const locationsApi = new LocationsApi();
 
 app.post('/chargeForCookie', async (request, response) => {
+	console.log('/chargeForCookie');
   const requestBody = request.body;
   const locations = await locationsApi.listLocations();
   const locationId = locations.locations[0].id;
@@ -106,5 +107,6 @@ app.post('/chargeForCookie', async (request, response) => {
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
-  console.log('=CCSSQUARE= Your app is listening on port ' + listener.address().port);
+	console.log(process.env.ACCESS_TOKEN);
+  console.log('Your app is listening on port ' + listener.address().port);
 });
